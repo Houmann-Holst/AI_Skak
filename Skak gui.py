@@ -38,7 +38,7 @@ class ChessGUI:
                     outline=color
                 )
 
-        # ⚠️ Ingen brik-tekst rendering (fjernet med vilje)
+        # Ingen brik-tekst rendering (fjernet med vilje)
 
     def run(self):
         self.root.mainloop()
@@ -47,3 +47,4 @@ class ChessGUI:
 if __name__ == "__main__":
     gui = ChessGUI()
     gui.run()
+
