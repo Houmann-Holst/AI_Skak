@@ -20,25 +20,25 @@ class ChessGUI:
 
     def draw_board(self):
         self.canvas.delete("all")
-        colors = ["#f0d9b5", "#b58863"]
+
+        # Grøn / hvid (lichess style)
+        light_color = "#eeeed2"
+        dark_color = "#769656"
 
         for row in range(8):
             for col in range(8):
-                color = colors[(row + col) % 2]
+                color = light_color if (row + col) % 2 == 0 else dark_color
                 x1 = col * self.square_size
                 y1 = row * self.square_size
                 x2 = x1 + self.square_size
                 y2 = y1 + self.square_size
-                self.canvas.create_rectangle(x1, y1, x2, y2, fill=color)
+                self.canvas.create_rectangle(
+                    x1, y1, x2, y2,
+                    fill=color,
+                    outline=color
+                )
 
-        for square in chess.SQUARES:
-            piece = self.board.piece_at(square)
-            if piece:
-                row = 7 - chess.square_rank(square)
-                col = chess.square_file(square)
-                x = col * self.square_size + 30
-                y = row * self.square_size + 30
-                self.canvas.create_text(x, y, text=piece.symbol(), font=("Arial", 24))
+        # ⚠️ Ingen brik-tekst rendering (fjernet med vilje)
 
     def run(self):
         self.root.mainloop()
